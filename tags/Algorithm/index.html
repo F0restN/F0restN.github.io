@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Algorithm | Hexo</title>
+  <title>Tag: Algorithm | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linked listDummy head point PS：经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理。 比如说，让你把两条有序链表合并成一条新的有序链表，是不是要创造一条新链表？再比你想把一条链表分解成两条链表，是不是也在创造新链表？这些情况都可以使用虚拟头结点简化边界情况的处理。  How to iterate">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm">
-<meta property="og:url" content="http://example.com/2022/11/16/Algorithm/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/tags/Algorithm/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linked listDummy head point PS：经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理。 比如说，让你把两条有序链表合并成一条新的有序链表，是不是要创造一条新链表？再比你想把一条链表分解成两条链表，是不是也在创造新链表？这些情况都可以使用虚拟头结点简化边界情况的处理。  How to iterate">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-11-16T18:02:43.000Z">
-<meta property="article:modified_time" content="2022-11-16T20:05:52.330Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,286 +150,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Algorithm" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Algorithm
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/11/16/Handy-Tools/" class="archive-article-date">
+  	<time datetime="2022-11-16T20:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/11/16/Handy-Tools/">Handy Tools</a>
     </h1>
   
 
-        
-        <a href="/2022/11/16/Algorithm/" class="archive-article-date">
-  	<time datetime="2022-11-16T18:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h2><h3 id="Dummy-head-point"><a href="#Dummy-head-point" class="headerlink" title="Dummy head point"></a>Dummy head point</h3><blockquote>
-<p>PS：经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：<strong>当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理</strong>。</p>
-<p>比如说，让你把两条有序链表合并成一条新的有序链表，是不是要创造一条新链表？再比你想把一条链表分解成两条链表，是不是也在创造新链表？这些情况都可以使用虚拟头结点简化边界情况的处理。</p>
-</blockquote>
-<h3 id="How-to-iterate-a-linked-list"><a href="#How-to-iterate-a-linked-list" class="headerlink" title="How to iterate a linked list?"></a>How to iterate a linked list?</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ListNode <span class="title function_">middleNode</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    <span class="comment">// 快慢指针初始化指向 head</span></span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head, fast = head;</span><br><span class="line">    <span class="comment">// 快指针走到末尾时停止</span></span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 慢指针走一步，快指针走两步</span></span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 慢指针指向中点</span></span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-<h3 id="Double-cursor"><a href="#Double-cursor" class="headerlink" title="Double cursor"></a>Double cursor</h3><p>Double cursor can also be used as a slide window.</p>
-<h2 id="Java-String-x2F-Regex"><a href="#Java-String-x2F-Regex" class="headerlink" title="Java String &#x2F; Regex"></a>Java String &#x2F; Regex</h2><p>现在我们使用一下稍微高级点的正则匹配操作,例如有一段文本,里面有很多数字,而且这些数字是分开的,我们现在要将文本中所有数字都取出来,利用 java 的正则操作是那么的简单.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> “我的QQ是:<span class="number">456456</span> 我的电话是:<span class="number">0532214</span> 我的邮箱是:aaa123<span class="meta">@aaa</span>.com”</span><br><span class="line">Pattern p=Pattern.compile(“\d+”);</span><br><span class="line">Matcher m=p.matcher(str);</span><br><span class="line"><span class="keyword">while</span>(m.find()) &#123;</span><br><span class="line">  System.out.println(m.group());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"><span class="number">456456</span></span><br><span class="line"><span class="number">0532214</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
+          
 
-<p>如将以上 while()循环替换成</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(m.find()) &#123;</span><br><span class="line">  System.out.println(m.group());</span><br><span class="line">  System.out.print(“start:”+m.start());</span><br><span class="line">  System.out.println(” end:”+m.end());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">则输出:</span><br><span class="line"><span class="number">456456</span></span><br><span class="line">start:<span class="number">6</span> end:<span class="number">12</span></span><br><span class="line"><span class="number">0532214</span></span><br><span class="line">start:<span class="number">19</span> end:<span class="number">26</span></span><br><span class="line"><span class="number">123</span></span><br><span class="line">start:<span class="number">36</span> end:<span class="number">39</span></span><br></pre></td></tr></table></figure>
-
-<p>现在大家应该知道,每次执行匹配操作后 start(),end(),group()三个方法的值都会改变,改变成匹配到的子字符串的信息,以及它们的重载方法,也会改变成相应的信息.<br>注意:只有当匹配操作成功,才可以使用 start(),end(),group()三个方法,否则会抛出 java.lang.IllegalStateException,也就是当 matches(),lookingAt(),find()其中任意一个方法返回 true 时,才可以使用。</p>
-<h3 id="Java-Formatd-的使用"><a href="#Java-Formatd-的使用" class="headerlink" title="Java Formatd 的使用"></a>Java Formatd 的使用</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lonely_fireworks/article/details/7962171">https://blog.csdn.net/lonely_fireworks/article/details/7962171</a></p>
-<h3 id="Slide-window"><a href="#Slide-window" class="headerlink" title="Slide window"></a>Slide window</h3><p>如果能单个处理每个加入的字符 会方便很多</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">slideWindow</span><span class="params">(String s)</span>&#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (right &lt; s.length())&#123;</span><br><span class="line">    <span class="comment">// New income character</span></span><br><span class="line">    <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> s[right];</span><br><span class="line">    <span class="comment">// Expand window</span></span><br><span class="line">    right++;</span><br><span class="line">    <span class="comment">// process</span></span><br><span class="line">    <span class="keyword">while</span> (window needs shrink)&#123;</span><br><span class="line">    	<span class="comment">// Character gonna removed from window</span></span><br><span class="line">      <span class="type">char</span> <span class="variable">d</span> <span class="operator">=</span> s[left];</span><br><span class="line">      <span class="comment">// Shrink</span></span><br><span class="line">      left++;</span><br><span class="line">      <span class="comment">// process</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ol>
-<li>Java 中的 Integer 和 String 这种包装类不能直接用 <code>==</code> 进行相等判断，而应该使用类的 <code>equals</code> 方法，这个语言特性坑了不少读者，在代码部分我会给出具体提示。</li>
-</ol>
-<p><strong>Methods of StringBuffer class</strong></p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>Methods</strong></th>
-<th align="left"><strong>Action Performed</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">append()</td>
-<td align="left">Used to add text at the end of the existing text.</td>
-</tr>
-<tr>
-<td align="left">length()</td>
-<td align="left">The length of a StringBuffer can be found by the length( ) method</td>
-</tr>
-<tr>
-<td align="left">capacity()</td>
-<td align="left">the total allocated capacity can be found by the capacity( ) method</td>
-</tr>
-<tr>
-<td align="left">charAt()</td>
-<td align="left">This method returns the char value in this sequence at the specified index.</td>
-</tr>
-<tr>
-<td align="left">delete()</td>
-<td align="left">Deletes a sequence of characters from the invoking object</td>
-</tr>
-<tr>
-<td align="left">deleteCharAt()</td>
-<td align="left">Deletes the character at the index specified by <em>loc</em></td>
-</tr>
-<tr>
-<td align="left">ensureCapacity()</td>
-<td align="left">Ensures capacity is at least equals to the given minimum.</td>
-</tr>
-<tr>
-<td align="left">insert()</td>
-<td align="left">Inserts text at the specified index position</td>
-</tr>
-<tr>
-<td align="left">length()</td>
-<td align="left">Returns length of the string</td>
-</tr>
-<tr>
-<td align="left">reverse()</td>
-<td align="left">Reverse the characters within a StringBuffer object</td>
-</tr>
-<tr>
-<td align="left">replace()</td>
-<td align="left">Replace one set of characters with another set inside a StringBuffer object</td>
-</tr>
-</tbody></table>
-<p>Convert int[] to ArrayList</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] k = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">List&lt;Integer&gt; list = Arrays.stream(k).boxed().collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">Integer[] intArr = <span class="keyword">new</span> <span class="title class_">Integer</span>[]&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line">ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(Arrays.asList(intArr));</span><br></pre></td></tr></table></figure>
-
-<p>Calculate bitmask(non-repeat String)</p>
-<p>Means a nonsequencial string. With same character(sequence doesn’t matter), the bitmask is always the same</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">calculateBitmask</span><span class="params">(String str)</span> &#123;</span><br><span class="line">  <span class="type">long</span> <span class="variable">bitmask</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">    bitmask ^= <span class="number">1L</span> &lt;&lt; (str.charAt(i) - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bitmask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Length &#x2F; length()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] <span class="type">char</span>[] = length;</span><br><span class="line">String Integer[] = length();</span><br></pre></td></tr></table></figure>
-
-<h2 id="回文系列"><a href="#回文系列" class="headerlink" title="回文系列"></a>回文系列</h2><p><strong>寻找</strong>回文串的核心思想是从中心向两端扩展：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 s 中寻找以 s[left] 和 s[right] 为中心的最长回文串</span></span><br><span class="line">String <span class="title function_">palindrome</span><span class="params">(String s, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">    <span class="comment">// 防止索引越界</span></span><br><span class="line">    <span class="keyword">while</span> (left &gt;= <span class="number">0</span> &amp;&amp; right &lt; s.length()</span><br><span class="line">            &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</span><br><span class="line">        <span class="comment">// 双指针，向两边展开</span></span><br><span class="line">        left--;</span><br><span class="line">        right++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回以 s[left] 和 s[right] 为中心的最长回文串</span></span><br><span class="line">    <span class="keyword">return</span> s.substring(left + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因为回文串长度可能为奇数也可能是偶数，长度为奇数时只存在一个中心点，而长度为偶数时存在两个中心点，所以上面这个函数需要传入 <code>l</code> 和 <code>r</code>。</p>
-<p>而<strong>判断</strong>一个字符串是不是回文串就简单很多，不需要考虑奇偶情况，只需要 <a target="_blank" rel="noopener" href="https://labuladong.github.io/algo/2/20/23/">双指针技巧</a>，从两端向中间逼近即可：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    <span class="comment">// 一左一右两个指针相向而行</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.charAt(left) != s.charAt(right)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        left++;</span><br><span class="line">        right--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码很好理解吧，<strong>因为回文串是对称的，所以正着读和倒着读应该是一样的，这一特点是解决回文串问题的关键</strong>。</p>
-<p>下面扩展这一最简单的情况，来解决：如何判断一个「单链表」是不是回文。</p>
-<p>双指针：</p>
-<ol>
-<li>左右指针</li>
-<li>快慢指针</li>
-<li>滑动窗口</li>
-</ol>
-<h2 id="二分法查找"><a href="#二分法查找" class="headerlink" title="二分法查找"></a>二分法查找</h2><p>Sorted Array</p>
-<p>when the length of arr is odd, like <code>[1, 2, 3]</code> we know <code>mid = 2</code>without any problem. But what if the length of arr is even? like <code>[1, 2]</code>, below is the logic :</p>
-<ol>
-<li>since <code>mid = (left + right ) / 2</code> mid firstly, will equal to the very left one <code>1</code></li>
-<li>If target is <code>2</code>, since left still less than right, we will still jump into while loop</li>
-<li>Then, left still less than target, and left will be assigned to mid + 1 &#x3D; 0 + 1 &#x3D; 1 &#x3D; right, the scope turn into <code>[2]</code></li>
-<li>NOTE: <code>left &lt;= right</code> also means, scope &gt;&#x3D; 0. Even <code>right - left = 0</code> mid &#x3D; right &#x2F; left.</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> target)</span>&#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">leftIndex</span> <span class="operator">=</span> <span class="number">0</span>, rightIndex = arr.length() - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(leftIndex &lt;= rightIndex)&#123;</span><br><span class="line">    <span class="comment">// Avoid overflow</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">midIndex</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(arr[midIndex] == target)&#123;</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; arr[midIndex])&#123;</span><br><span class="line">      leftIndex = midIndex + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; arr[midIndex])&#123;</span><br><span class="line">      right = midIndex - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>while(left &lt;= right)</code> 的终止条件是 <code>left == right + 1</code>，写成区间的形式就是 <code>[right + 1, right]</code>，或者带个具体的数字进去 <code>[3, 2]</code>，可见<strong>这时候区间为空</strong>，因为没有数字既大于等于 3 又小于等于 2 的吧。所以这时候 while 循环终止是正确的，直接返回 -1 即可。</p>
-<p><code>while(left &lt; right)</code> 的终止条件是 <code>left == right</code>，写成区间的形式就是 <code>[right, right]</code>，或者带个具体的数字进去 <code>[2, 2]</code>，<strong>这时候区间非空</strong>，还有一个数 2，但此时 while 循环终止了。也就是说这区间 <code>[2, 2]</code> 被漏掉了，索引 2 没有被搜索，如果这时候直接返回 -1 就是错误的。</p>
-<pre><code>//...
-while(left &lt; right) &#123;
-    // ...
-&#125;
-return nums[left] == target ? left : -1;
-</code></pre>
-<h2 id="Priority-Queue"><a href="#Priority-Queue" class="headerlink" title="Priority Queue"></a>Priority Queue</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;ListNode&gt; pq = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;ListNode&gt;()&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(ListNode o1, ListNode o2)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> -(o1 - o2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>193-225</p>
-<h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2><h3 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h3><ol>
-<li><p>Collections.sort(List, [comparator])</p>
-</li>
-<li><p>Arrasy.asList()</p>
-</li>
-<li><p>Arrays.toString(int[]) -&gt; return a string represent all numbers in array.</p>
-</li>
-<li><p>&#96;&#96;&#96;java<br>Arrays.sort(T[], new Comparator<int>(){<br>  @Override<br>  public int compare(int o1, int o2){<br>return o1-o2;<br>  }<br>})</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Binary Tree</span><br><span class="line"></span><br><span class="line">### Preorder traversal</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode() &#123;&#125;</span><br><span class="line"> *     TreeNode(int val) &#123; this.val = val; &#125;</span><br><span class="line"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span><br><span class="line"> *         this.val = val;</span><br><span class="line"> *         this.left = left;</span><br><span class="line"> *         this.right = right;</span><br><span class="line"> *     &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</span><br><span class="line">        List&lt;Integer&gt; ans = new LinkedList&lt;&gt;();</span><br><span class="line">        traversal(root, ans);</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void traversal(TreeNode node, List&lt;Integer&gt; list)&#123;</span><br><span class="line">        if(node == null)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        list.add(node.val);</span><br><span class="line">        traversal(node.left, list);</span><br><span class="line">        traversal(node.right, list);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="Postorder-traversal"><a href="#Postorder-traversal" class="headerlink" title="Postorder traversal"></a>Postorder traversal</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        traversal(root, ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">traversal</span><span class="params">(TreeNode node, List&lt;Integer&gt; list)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        traversal(node.left, list);</span><br><span class="line">        traversal(node.right, list);</span><br><span class="line">        list.add(node.val);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/11/16/Algorithm/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-  
-    <a href="/2022/11/16/First-doc/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">First doc</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/11/16/LinkedList-Array/" class="archive-article-date">
+  	<time datetime="2022-11-16T18:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/11/16/LinkedList-Array/">LinkedList &amp; Array</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -456,9 +264,9 @@ return nums[left] == target ? left : -1;
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -524,6 +332,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

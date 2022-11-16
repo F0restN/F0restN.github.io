@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | Hexo</title>
+  <title>LinkedList &amp; Array | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+  <meta name="description" content="Linked listDummy head point PS：经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理。 比如说，让你把两条有序链表合并成一条新的有序链表，是不是要创造一条新链表？再比你想把一条链表分解成两条链表，是不是也在创造新链表？这些情况都可以使用虚拟头结点简化边界情况的处理。  How to iterate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LinkedList &amp; Array">
+<meta property="og:url" content="http://example.com/2022/11/16/LinkedList-Array/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linked listDummy head point PS：经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理。 比如说，让你把两条有序链表合并成一条新的有序链表，是不是要创造一条新链表？再比你想把一条链表分解成两条链表，是不是也在创造新链表？这些情况都可以使用虚拟头结点简化边界情况的处理。  How to iterate">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-16T18:02:43.000Z">
+<meta property="article:modified_time" content="2022-11-16T20:53:11.625Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,36 +155,109 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LinkedList-Array" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/Handy-Tools/" class="archive-article-date">
-  	<time datetime="2022-11-16T20:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/Handy-Tools/">Handy Tools</a>
+    <h1 class="article-title" itemprop="name">
+      LinkedList &amp; Array
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/11/16/LinkedList-Array/" class="archive-article-date">
+  	<time datetime="2022-11-16T18:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h2><h3 id="Dummy-head-point"><a href="#Dummy-head-point" class="headerlink" title="Dummy head point"></a>Dummy head point</h3><blockquote>
+<p>PS：经常有读者问我，什么时候需要用虚拟头结点？我这里总结下：<strong>当你需要创造一条新链表的时候，可以使用虚拟头结点简化边界情况的处理</strong>。</p>
+<p>比如说，让你把两条有序链表合并成一条新的有序链表，是不是要创造一条新链表？再比你想把一条链表分解成两条链表，是不是也在创造新链表？这些情况都可以使用虚拟头结点简化边界情况的处理。</p>
+</blockquote>
+<h3 id="How-to-iterate-a-linked-list"><a href="#How-to-iterate-a-linked-list" class="headerlink" title="How to iterate a linked list?"></a>How to iterate a linked list?</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ListNode <span class="title function_">middleNode</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    <span class="comment">// 快慢指针初始化指向 head</span></span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head, fast = head;</span><br><span class="line">    <span class="comment">// 快指针走到末尾时停止</span></span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 慢指针走一步，快指针走两步</span></span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 慢指针指向中点</span></span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Double-cursor"><a href="#Double-cursor" class="headerlink" title="Double cursor"></a>Double cursor</h3><p>Double cursor can also be used as a slide window.</p>
+<h2 id="Java-String-x2F-Regex"><a href="#Java-String-x2F-Regex" class="headerlink" title="Java String &#x2F; Regex"></a>Java String &#x2F; Regex</h2><p>现在我们使用一下稍微高级点的正则匹配操作,例如有一段文本,里面有很多数字,而且这些数字是分开的,我们现在要将文本中所有数字都取出来,利用 java 的正则操作是那么的简单.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> “我的QQ是:<span class="number">456456</span> 我的电话是:<span class="number">0532214</span> 我的邮箱是:aaa123<span class="meta">@aaa</span>.com”</span><br><span class="line">Pattern p=Pattern.compile(“\d+”);</span><br><span class="line">Matcher m=p.matcher(str);</span><br><span class="line"><span class="keyword">while</span>(m.find()) &#123;</span><br><span class="line">  System.out.println(m.group());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"><span class="number">456456</span></span><br><span class="line"><span class="number">0532214</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>如将以上 while()循环替换成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(m.find()) &#123;</span><br><span class="line">  System.out.println(m.group());</span><br><span class="line">  System.out.print(“start:”+m.start());</span><br><span class="line">  System.out.println(” end:”+m.end());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">则输出:</span><br><span class="line"><span class="number">456456</span></span><br><span class="line">start:<span class="number">6</span> end:<span class="number">12</span></span><br><span class="line"><span class="number">0532214</span></span><br><span class="line">start:<span class="number">19</span> end:<span class="number">26</span></span><br><span class="line"><span class="number">123</span></span><br><span class="line">start:<span class="number">36</span> end:<span class="number">39</span></span><br></pre></td></tr></table></figure>
+
+<p>现在大家应该知道,每次执行匹配操作后 start(),end(),group()三个方法的值都会改变,改变成匹配到的子字符串的信息,以及它们的重载方法,也会改变成相应的信息.<br>注意:只有当匹配操作成功,才可以使用 start(),end(),group()三个方法,否则会抛出 java.lang.IllegalStateException,也就是当 matches(),lookingAt(),find()其中任意一个方法返回 true 时,才可以使用。</p>
+<h3 id="Java-Formatd-的使用"><a href="#Java-Formatd-的使用" class="headerlink" title="Java Formatd 的使用"></a>Java Formatd 的使用</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lonely_fireworks/article/details/7962171">https://blog.csdn.net/lonely_fireworks/article/details/7962171</a></p>
+<h3 id="Slide-window"><a href="#Slide-window" class="headerlink" title="Slide window"></a>Slide window</h3><p>如果能单个处理每个加入的字符 会方便很多</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">slideWindow</span><span class="params">(String s)</span>&#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (right &lt; s.length())&#123;</span><br><span class="line">    <span class="comment">// New income character</span></span><br><span class="line">    <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> s[right];</span><br><span class="line">    <span class="comment">// Expand window</span></span><br><span class="line">    right++;</span><br><span class="line">    <span class="comment">// process</span></span><br><span class="line">    <span class="keyword">while</span> (window needs shrink)&#123;</span><br><span class="line">    	<span class="comment">// Character gonna removed from window</span></span><br><span class="line">      <span class="type">char</span> <span class="variable">d</span> <span class="operator">=</span> s[left];</span><br><span class="line">      <span class="comment">// Shrink</span></span><br><span class="line">      left++;</span><br><span class="line">      <span class="comment">// process</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="回文系列"><a href="#回文系列" class="headerlink" title="回文系列"></a>回文系列</h2><p><strong>寻找</strong>回文串的核心思想是从中心向两端扩展：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 s 中寻找以 s[left] 和 s[right] 为中心的最长回文串</span></span><br><span class="line">String <span class="title function_">palindrome</span><span class="params">(String s, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">    <span class="comment">// 防止索引越界</span></span><br><span class="line">    <span class="keyword">while</span> (left &gt;= <span class="number">0</span> &amp;&amp; right &lt; s.length()</span><br><span class="line">            &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</span><br><span class="line">        <span class="comment">// 双指针，向两边展开</span></span><br><span class="line">        left--;</span><br><span class="line">        right++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回以 s[left] 和 s[right] 为中心的最长回文串</span></span><br><span class="line">    <span class="keyword">return</span> s.substring(left + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为回文串长度可能为奇数也可能是偶数，长度为奇数时只存在一个中心点，而长度为偶数时存在两个中心点，所以上面这个函数需要传入 <code>l</code> 和 <code>r</code>。</p>
+<p>而<strong>判断</strong>一个字符串是不是回文串就简单很多，不需要考虑奇偶情况，只需要 <a target="_blank" rel="noopener" href="https://labuladong.github.io/algo/2/20/23/">双指针技巧</a>，从两端向中间逼近即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    <span class="comment">// 一左一右两个指针相向而行</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.charAt(left) != s.charAt(right)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        left++;</span><br><span class="line">        right--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码很好理解吧，<strong>因为回文串是对称的，所以正着读和倒着读应该是一样的，这一特点是解决回文串问题的关键</strong>。</p>
+<p>下面扩展这一最简单的情况，来解决：如何判断一个「单链表」是不是回文。</p>
+<p>双指针：</p>
+<ol>
+<li>左右指针</li>
+<li>快慢指针</li>
+<li>滑动窗口</li>
+</ol>
+<h2 id="二分法查找"><a href="#二分法查找" class="headerlink" title="二分法查找"></a>二分法查找</h2><p>Sorted Array</p>
+<p>when the length of arr is odd, like <code>[1, 2, 3]</code> we know <code>mid = 2</code>without any problem. But what if the length of arr is even? like <code>[1, 2]</code>, below is the logic :</p>
+<ol>
+<li>since <code>mid = (left + right ) / 2</code> mid firstly, will equal to the very left one <code>1</code></li>
+<li>If target is <code>2</code>, since left still less than right, we will still jump into while loop</li>
+<li>Then, left still less than target, and left will be assigned to mid + 1 &#x3D; 0 + 1 &#x3D; 1 &#x3D; right, the scope turn into <code>[2]</code></li>
+<li>NOTE: <code>left &lt;= right</code> also means, scope &gt;&#x3D; 0. Even <code>right - left = 0</code> mid &#x3D; right &#x2F; left.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> target)</span>&#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">leftIndex</span> <span class="operator">=</span> <span class="number">0</span>, rightIndex = arr.length() - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(leftIndex &lt;= rightIndex)&#123;</span><br><span class="line">    <span class="comment">// Avoid overflow</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">midIndex</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(arr[midIndex] == target)&#123;</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; arr[midIndex])&#123;</span><br><span class="line">      leftIndex = midIndex + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; arr[midIndex])&#123;</span><br><span class="line">      right = midIndex - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>while(left &lt;= right)</code> 的终止条件是 <code>left == right + 1</code>，写成区间的形式就是 <code>[right + 1, right]</code>，或者带个具体的数字进去 <code>[3, 2]</code>，可见<strong>这时候区间为空</strong>，因为没有数字既大于等于 3 又小于等于 2 的吧。所以这时候 while 循环终止是正确的，直接返回 -1 即可。</p>
+<p><code>while(left &lt; right)</code> 的终止条件是 <code>left == right</code>，写成区间的形式就是 <code>[right, right]</code>，或者带个具体的数字进去 <code>[2, 2]</code>，<strong>这时候区间非空</strong>，还有一个数 2，但此时 while 循环终止了。也就是说这区间 <code>[2, 2]</code> 被漏掉了，索引 2 没有被搜索，如果这时候直接返回 -1 就是错误的。</p>
+<pre><code>//...
+while(left &lt; right) &#123;
+    // ...
+&#125;
+return nums[left] == target ? left : -1;
+</code></pre>
+<h2 id="Priority-Queue"><a href="#Priority-Queue" class="headerlink" title="Priority Queue"></a>Priority Queue</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;ListNode&gt; pq = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;ListNode&gt;()&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(ListNode o1, ListNode o2)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> -(o1 - o2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>193-225</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,138 +269,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/11/16/LinkedList-Array/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/Binary-Tree/" class="archive-article-date">
-  	<time datetime="2022-11-16T20:50:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/11/16/First-doc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          First doc
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/11/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/Binary-Tree/">Binary Tree</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/First-doc/" class="archive-article-date">
-  	<time datetime="2022-11-16T18:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/First-doc/">First doc</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/LinkedList-Array/" class="archive-article-date">
-  	<time datetime="2022-11-16T18:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/LinkedList-Array/">LinkedList &amp; Array</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/hello-world/" class="archive-article-date">
-  	<time datetime="2022-11-16T17:57:46.938Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -345,8 +400,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

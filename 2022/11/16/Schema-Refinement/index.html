@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://f0restn.github.io">
-  <title>Handy Tools | Batcave</title>
+  <title>Schema Refinement | Batcave</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ToolsSort Collections.sort(List, [comparator])  Arrasy.asList()  Arrays.toString(int[]) -&gt; return a string represent all numbers in array.  &#96;&#96;&#96;javaArrays.sort(T[], new Comparator(){  @O">
+  <meta name="description" content="Functional DependenciesIf we know X then we know what value is Y for sure, then we say X -&gt; Y 123456789101112For example, like this table below:A B C D E1 2 3 4 51 2 2 2 21 2 3 2 32 2 2 4 4ABC → AB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Handy Tools">
-<meta property="og:url" content="https://f0restn.github.io/2022/11/16/Handy-Tools/index.html">
+<meta property="og:title" content="Schema Refinement">
+<meta property="og:url" content="https://f0restn.github.io/2022/11/16/Schema-Refinement/index.html">
 <meta property="og:site_name" content="Batcave">
-<meta property="og:description" content="ToolsSort Collections.sort(List, [comparator])  Arrasy.asList()  Arrays.toString(int[]) -&gt; return a string represent all numbers in array.  &#96;&#96;&#96;javaArrays.sort(T[], new Comparator(){  @O">
+<meta property="og:description" content="Functional DependenciesIf we know X then we know what value is Y for sure, then we say X -&gt; Y 123456789101112For example, like this table below:A B C D E1 2 3 4 51 2 2 2 21 2 3 2 32 2 2 4 4ABC → AB">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-11-16T20:52:05.000Z">
-<meta property="article:modified_time" content="2022-11-16T21:45:04.483Z">
+<meta property="article:published_time" content="2022-11-17T04:52:33.000Z">
+<meta property="article:modified_time" content="2022-11-17T17:12:05.370Z">
 <meta property="article:author" content="Drake Zhou">
-<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Database">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Batcave" type="application/atom+xml">
@@ -147,42 +147,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Handy-Tools" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Schema-Refinement" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Handy Tools
+      Schema Refinement
     </h1>
   
 
         
-        <a href="/2022/11/16/Handy-Tools/" class="archive-article-date">
-  	<time datetime="2022-11-16T20:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
+        <a href="/2022/11/16/Schema-Refinement/" class="archive-article-date">
+  	<time datetime="2022-11-17T04:52:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2><h3 id="Sort"><a href="#Sort" class="headerlink" title="Sort"></a>Sort</h3><ol>
-<li><p>Collections.sort(List, [comparator])</p>
-</li>
-<li><p>Arrasy.asList()</p>
-</li>
-<li><p>Arrays.toString(int[]) -&gt; return a string represent all numbers in array.</p>
-</li>
-<li><p>&#96;&#96;&#96;java<br>Arrays.sort(T[], new Comparator<int>(){<br>  @Override<br>  public int compare(int o1, int o2){<br>return o1-o2;<br>  }<br>})</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Tips</span><br><span class="line"></span><br><span class="line">1. Java 中的 Integer 和 String 这种包装类不能直接用 `==` 进行相等判断，而应该使用类的 `equals` 方法，这个语言特性坑了不少读者，在代码部分我会给出具体提示。</span><br><span class="line"></span><br><span class="line">**Methods of StringBuffer class**</span><br><span class="line"></span><br><span class="line">| **Methods**      | **Action Performed**                                                        |</span><br><span class="line">| :--------------- | :-------------------------------------------------------------------------- |</span><br><span class="line">| append()         | Used to add text at the end of the existing text.                           |</span><br><span class="line">| length()         | The length of a StringBuffer can be found by the length( ) method           |</span><br><span class="line">| capacity()       | the total allocated capacity can be found by the capacity( ) method         |</span><br><span class="line">| charAt()         | This method returns the char value in this sequence at the specified index. |</span><br><span class="line">| delete()         | Deletes a sequence of characters from the invoking object                   |</span><br><span class="line">| deleteCharAt()   | Deletes the character at the index specified by _loc_                       |</span><br><span class="line">| ensureCapacity() | Ensures capacity is at least equals to the given minimum.                   |</span><br><span class="line">| insert()         | Inserts text at the specified index position                                |</span><br><span class="line">| length()         | Returns length of the string                                                |</span><br><span class="line">| reverse()        | Reverse the characters within a StringBuffer object                         |</span><br><span class="line">| replace()        | Replace one set of characters with another set inside a StringBuffer object |</span><br><span class="line"></span><br><span class="line">Convert int[] to ArrayList</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">int[] k = &#123;1,2,3&#125;;</span><br><span class="line">List&lt;Integer&gt; list = Arrays.stream(k).boxed().collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">Integer[] intArr = new Integer[]&#123;1,3,2&#125;;</span><br><span class="line">ArrayList&lt;Integer&gt; ans = new ArrayList&lt;&gt;(Arrays.asList(intArr));</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>Calculate bitmask(non-repeat String)</p>
-<p>Means a nonsequencial string. With same character(sequence doesn’t matter), the bitmask is always the same</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">calculateBitmask</span><span class="params">(String str)</span> &#123;</span><br><span class="line">  <span class="type">long</span> <span class="variable">bitmask</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">    bitmask ^= <span class="number">1L</span> &lt;&lt; (str.charAt(i) - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bitmask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="Functional-Dependencies"><a href="#Functional-Dependencies" class="headerlink" title="Functional Dependencies"></a>Functional Dependencies</h2><p>If we know X then we know what value is Y for sure, then we say X -&gt; Y</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">For example, like this table below:</span><br><span class="line"></span><br><span class="line">A B C D E</span><br><span class="line">1 2 3 4 5</span><br><span class="line">1 2 2 2 2</span><br><span class="line">1 2 3 2 3</span><br><span class="line">2 2 2 4 4</span><br><span class="line"></span><br><span class="line">ABC → AB （√）</span><br><span class="line">A → B （√）</span><br><span class="line">ABC → D （×）</span><br><span class="line">E → ABCD （√）</span><br></pre></td></tr></table></figure>
 
-<p>Length &#x2F; length()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] <span class="type">char</span>[] = length;</span><br><span class="line">String Integer[] = length();</span><br></pre></td></tr></table></figure>
+<h3 id="Armstrong’s-Axioms"><a href="#Armstrong’s-Axioms" class="headerlink" title="Armstrong’s Axioms"></a>Armstrong’s Axioms</h3><p>Reflexive rule： XY → Y</p>
+<p>Augmentation rule： { X → Y } |&#x3D; { XZ → YZ }</p>
+<p>Transitive rule： { X → Y， Y → Z } |&#x3D; { X → Z }</p>
+<p>Union rule： { X → Y， X → Z } |&#x3D; { X → YZ }</p>
+<p>Decomposition rule： { X → YZ } |&#x3D; { X → Y， X → Z }</p>
 
       
 
@@ -196,7 +188,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
         		</li>
       		
 		</ul>
@@ -252,7 +244,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://f0restn.github.io/2022/11/16/Handy-Tools/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://f0restn.github.io/2022/11/16/Schema-Refinement/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -266,18 +258,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/11/16/Schema-Refinement/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/11/17/ER-Model/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Schema Refinement
+          ER Model
         
       </div>
     </a>
   
   
-    <a href="/2022/11/16/Binary-Tree/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Binary Tree</div>
+    <a href="/2022/11/16/Handy-Tools/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Handy Tools</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -304,7 +296,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tools"><span class="toc-number">1.</span> <span class="toc-text">Tools</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sort"><span class="toc-number">1.1.</span> <span class="toc-text">Sort</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Functional-Dependencies"><span class="toc-number">1.</span> <span class="toc-text">Functional Dependencies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Armstrong%E2%80%99s-Axioms"><span class="toc-number">1.1.</span> <span class="toc-text">Armstrong’s Axioms</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

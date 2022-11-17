@@ -147,6 +147,166 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ER-Model" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/17/ER-Model/">ER Model</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/17/ER-Model/" class="archive-article-date">
+  	<time datetime="2022-11-17T17:12:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p>Entity: present by rectangular, an object</p>
+<p>Attributes: present by ellipse, the property of a entity</p>
+<p>Relationship: present by diamond, relationship between two entities <strong>(turn into a intermediate table if its a N..N relation)</strong></p>
+<h2 id="Participation-Constraints"><a href="#Participation-Constraints" class="headerlink" title="Participation Constraints"></a>Participation Constraints</h2><p>For instance, in a relationship of customer order deliver.</p>
+<p><strong>Total Participation</strong>: Deliver entity is total participate in this R cuz each deliver must have been ordered by someone.</p>
+<p><strong>Participation Constraints</strong>: Customer is partial participate cuz not every customer ordered a deliver. (Or I should call them user?).</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/17/ER-Model/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Schema-Refinement" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/16/Schema-Refinement/">Schema Refinement</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/16/Schema-Refinement/" class="archive-article-date">
+  	<time datetime="2022-11-17T04:52:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Functional-Dependencies"><a href="#Functional-Dependencies" class="headerlink" title="Functional Dependencies"></a>Functional Dependencies</h2><p>If we know X then we know what value is Y for sure, then we say X -&gt; Y</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">For example, like this table below:</span><br><span class="line"></span><br><span class="line">A B C D E</span><br><span class="line">1 2 3 4 5</span><br><span class="line">1 2 2 2 2</span><br><span class="line">1 2 3 2 3</span><br><span class="line">2 2 2 4 4</span><br><span class="line"></span><br><span class="line">ABC → AB （√）</span><br><span class="line">A → B （√）</span><br><span class="line">ABC → D （×）</span><br><span class="line">E → ABCD （√）</span><br></pre></td></tr></table></figure>
+
+<h3 id="Armstrong’s-Axioms"><a href="#Armstrong’s-Axioms" class="headerlink" title="Armstrong’s Axioms"></a>Armstrong’s Axioms</h3><p>Reflexive rule： XY → Y</p>
+<p>Augmentation rule： { X → Y } |&#x3D; { XZ → YZ }</p>
+<p>Transitive rule： { X → Y， Y → Z } |&#x3D; { X → Z }</p>
+<p>Union rule： { X → Y， X → Z } |&#x3D; { X → YZ }</p>
+<p>Decomposition rule： { X → YZ } |&#x3D; { X → Y， X → Z }</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/16/Schema-Refinement/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Handy-Tools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -597,6 +757,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>

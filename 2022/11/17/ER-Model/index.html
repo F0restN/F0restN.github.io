@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://f0restn.github.io">
   <title>ER Model | Batcave</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BasicsEntity: present by rectangular, an object Attributes: present by ellipse, the property of a entity Relationship: present by diamond, relationship between two entities (turn into a intermediate t">
+  <meta name="description" content="BasicsEntity: an object, appear in a entity set. Like a row in a table. Has a key Entity set: present by rectangular, a collection of same(not exactly) entities. Like a table Weak Entity:  Owner entit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ER Model">
 <meta property="og:url" content="https://f0restn.github.io/2022/11/17/ER-Model/index.html">
 <meta property="og:site_name" content="Batcave">
-<meta property="og:description" content="BasicsEntity: present by rectangular, an object Attributes: present by ellipse, the property of a entity Relationship: present by diamond, relationship between two entities (turn into a intermediate t">
+<meta property="og:description" content="BasicsEntity: an object, appear in a entity set. Like a row in a table. Has a key Entity set: present by rectangular, a collection of same(not exactly) entities. Like a table Weak Entity:  Owner entit">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-17T17:12:36.000Z">
-<meta property="article:modified_time" content="2022-11-17T17:31:31.213Z">
+<meta property="article:modified_time" content="2022-11-17T17:44:51.116Z">
 <meta property="article:author" content="Drake Zhou">
 <meta property="article:tag" content="Database">
 <meta name="twitter:card" content="summary">
@@ -167,7 +167,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p>Entity: present by rectangular, an object</p>
+        <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p>Entity: an object, appear in a entity set. Like a row in a table. Has a key</p>
+<p>Entity set: present by rectangular, a collection of same(not exactly) entities. Like a table</p>
+<p>Weak Entity:</p>
+<ul>
+<li>Owner entity set and weak entity set must participate in a one-to-many relationship set (owner one and weak many)</li>
+<li>weak entity set must have total participation in this identifying relationship set.</li>
+<li>In other words. Like W appears only because O appears. Like a student parents to a student.</li>
+<li>represented by double border rectangular. dashed underline to identify its discriminator(like prim key).</li>
+</ul>
 <p>Attributes: present by ellipse, the property of a entity</p>
 <p>Relationship: present by diamond, relationship between two entities <strong>(turn into a intermediate table if its a N..N relation)</strong></p>
 <h2 id="Participation-Constraints"><a href="#Participation-Constraints" class="headerlink" title="Participation Constraints"></a>Participation Constraints</h2><p>For instance, in a relationship of customer order deliver.</p>
@@ -389,11 +397,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
             
             <div class="clearfix"></div>

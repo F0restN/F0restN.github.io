@@ -182,6 +182,7 @@
 <p><strong>Total Participation</strong>: Deliver entity is total participate in this R cuz each deliver must have been ordered by someone.</p>
 <p><strong>Participation Constraints</strong>: Customer is partial participate cuz not every customer ordered a deliver. (Or I should call them user?).</p>
 <h3 id="IsA"><a href="#IsA" class="headerlink" title="IsA"></a>IsA</h3><p>One entity type might be a subtype of another–very similar to subclasses in OO programming–which inherits the attributes and relationships of the first entity.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
       
 
@@ -258,11 +259,19 @@
         <h2 id="Functional-Dependencies"><a href="#Functional-Dependencies" class="headerlink" title="Functional Dependencies"></a>Functional Dependencies</h2><p>If we know X then we know what value is Y for sure, then we say X -&gt; Y</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">For example, like this table below:</span><br><span class="line"></span><br><span class="line">A B C D E</span><br><span class="line">1 2 3 4 5</span><br><span class="line">1 2 2 2 2</span><br><span class="line">1 2 3 2 3</span><br><span class="line">2 2 2 4 4</span><br><span class="line"></span><br><span class="line">ABC → AB （√）</span><br><span class="line">A → B （√）</span><br><span class="line">ABC → D （×）</span><br><span class="line">E → ABCD （√）</span><br></pre></td></tr></table></figure>
 
+<p>完全函数依赖： 确定 X 的值才能确定 Y 的值</p>
+<p>部分函数依赖： X 其中的某个值拿出来确定了，也可以确定 Y 的值，并不一定要 X 的值全部确定（假设 X 包含多个属性）</p>
+<p>传递函数依赖：假如 Z 函数依赖于 Y，且 Y 函数依赖于 X</p>
 <h3 id="Armstrong’s-Axioms"><a href="#Armstrong’s-Axioms" class="headerlink" title="Armstrong’s Axioms"></a>Armstrong’s Axioms</h3><p>Reflexive rule： XY → Y</p>
 <p>Augmentation rule： { X → Y } |&#x3D; { XZ → YZ }</p>
 <p>Transitive rule： { X → Y， Y → Z } |&#x3D; { X → Z }</p>
 <p>Union rule： { X → Y， X → Z } |&#x3D; { X → YZ }</p>
 <p>Decomposition rule： { X → YZ } |&#x3D; { X → Y， X → Z }</p>
+<h2 id="Normal-Form"><a href="#Normal-Form" class="headerlink" title="Normal Form"></a>Normal Form</h2><h3 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h3><p>数据库表中的字段都是单一属性的，不可再分, 必然是这样</p>
+<h3 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h3><p>数据库表中的每行必须可以被惟一地区分，如果一个非主属性既可以因为 A 的值而确定又可以因为 B 的值而确定，那么他就不符合第二范式</p>
+<h3 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h3><p>第三范式（3NF） 3NF 在 2NF 的基础之上，消除了非主属性对于主键的传递函数依赖</p>
+<p>在这样的数据库表中,不包含已在其它表中已经包含的，非主关键字信息。</p>
+<h3 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h3><p>不存在着主属性对于主键的部分函数依赖与传递函数依赖。（在此例中就是存在主属性【仓库名】对于码【（管理员，物品名）】的部分函数依赖。</p>
 
       
 
@@ -768,11 +777,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
             
             <div class="clearfix"></div>

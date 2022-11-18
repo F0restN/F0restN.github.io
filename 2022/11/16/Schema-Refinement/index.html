@@ -16,7 +16,7 @@
 <meta property="og:description" content="Functional DependenciesIf we know X then we know what value is Y for sure, then we say X -&gt; Y 123456789101112For example, like this table below:A B C D E1 2 3 4 51 2 2 2 21 2 3 2 32 2 2 4 4ABC → AB">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-17T04:52:33.000Z">
-<meta property="article:modified_time" content="2022-11-17T17:12:05.370Z">
+<meta property="article:modified_time" content="2022-11-18T04:57:06.555Z">
 <meta property="article:author" content="Drake Zhou">
 <meta property="article:tag" content="Database">
 <meta name="twitter:card" content="summary">
@@ -170,11 +170,19 @@
         <h2 id="Functional-Dependencies"><a href="#Functional-Dependencies" class="headerlink" title="Functional Dependencies"></a>Functional Dependencies</h2><p>If we know X then we know what value is Y for sure, then we say X -&gt; Y</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">For example, like this table below:</span><br><span class="line"></span><br><span class="line">A B C D E</span><br><span class="line">1 2 3 4 5</span><br><span class="line">1 2 2 2 2</span><br><span class="line">1 2 3 2 3</span><br><span class="line">2 2 2 4 4</span><br><span class="line"></span><br><span class="line">ABC → AB （√）</span><br><span class="line">A → B （√）</span><br><span class="line">ABC → D （×）</span><br><span class="line">E → ABCD （√）</span><br></pre></td></tr></table></figure>
 
+<p>完全函数依赖： 确定 X 的值才能确定 Y 的值</p>
+<p>部分函数依赖： X 其中的某个值拿出来确定了，也可以确定 Y 的值，并不一定要 X 的值全部确定（假设 X 包含多个属性）</p>
+<p>传递函数依赖：假如 Z 函数依赖于 Y，且 Y 函数依赖于 X</p>
 <h3 id="Armstrong’s-Axioms"><a href="#Armstrong’s-Axioms" class="headerlink" title="Armstrong’s Axioms"></a>Armstrong’s Axioms</h3><p>Reflexive rule： XY → Y</p>
 <p>Augmentation rule： { X → Y } |&#x3D; { XZ → YZ }</p>
 <p>Transitive rule： { X → Y， Y → Z } |&#x3D; { X → Z }</p>
 <p>Union rule： { X → Y， X → Z } |&#x3D; { X → YZ }</p>
 <p>Decomposition rule： { X → YZ } |&#x3D; { X → Y， X → Z }</p>
+<h2 id="Normal-Form"><a href="#Normal-Form" class="headerlink" title="Normal Form"></a>Normal Form</h2><h3 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h3><p>数据库表中的字段都是单一属性的，不可再分, 必然是这样</p>
+<h3 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h3><p>数据库表中的每行必须可以被惟一地区分，如果一个非主属性既可以因为 A 的值而确定又可以因为 B 的值而确定，那么他就不符合第二范式</p>
+<h3 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h3><p>第三范式（3NF） 3NF 在 2NF 的基础之上，消除了非主属性对于主键的传递函数依赖</p>
+<p>在这样的数据库表中,不包含已在其它表中已经包含的，非主关键字信息。</p>
+<h3 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h3><p>不存在着主属性对于主键的部分函数依赖与传递函数依赖。（在此例中就是存在主属性【仓库名】对于码【（管理员，物品名）】的部分函数依赖。</p>
 
       
 
@@ -296,7 +304,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Functional-Dependencies"><span class="toc-number">1.</span> <span class="toc-text">Functional Dependencies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Armstrong%E2%80%99s-Axioms"><span class="toc-number">1.1.</span> <span class="toc-text">Armstrong’s Axioms</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Functional-Dependencies"><span class="toc-number">1.</span> <span class="toc-text">Functional Dependencies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Armstrong%E2%80%99s-Axioms"><span class="toc-number">1.1.</span> <span class="toc-text">Armstrong’s Axioms</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-Form"><span class="toc-number">2.</span> <span class="toc-text">Normal Form</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1NF"><span class="toc-number">2.1.</span> <span class="toc-text">1NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2NF"><span class="toc-number">2.2.</span> <span class="toc-text">2NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3NF"><span class="toc-number">2.3.</span> <span class="toc-text">3NF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BCNF"><span class="toc-number">2.4.</span> <span class="toc-text">BCNF</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -400,11 +408,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
             
             <div class="clearfix"></div>

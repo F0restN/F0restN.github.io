@@ -147,6 +147,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Remove-Nth-from-End-of-List" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/30/Remove-Nth-from-End-of-List/">Remove Nth From End of List</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/30/Remove-Nth-from-End-of-List/" class="archive-article-date">
+  	<time datetime="2022-11-30T16:34:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given the head of a linked list, remove the nth node from the end of the list and return its head. Quite easy question, just wanna share two different ways of doing this.</p>
+<h3 id="Sliding-window"><a href="#Sliding-window" class="headerlink" title="Sliding window"></a>Sliding window</h3><p>Set a window of size n, when the end of window touchs the end of linked list. It means where the start of window pointing at, is the target. Hence, the code would be</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    Solution <span class="number">1.</span></span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>);</span><br><span class="line">    dummy.next = head;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">c1</span> <span class="operator">=</span> dummy, c2 = dummy;</span><br><span class="line">    <span class="comment">// End of window</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        c2 = c2.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sliding window</span></span><br><span class="line">    <span class="keyword">while</span>(c2.next != <span class="literal">null</span>)&#123;</span><br><span class="line">        c1 = c1.next;</span><br><span class="line">        c2 = c2.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    c1.next = c1.next.next;</span><br><span class="line">    <span class="keyword">return</span> dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Post-order-traversal"><a href="#Post-order-traversal" class="headerlink" title="Post-order traversal"></a>Post-order traversal</h3><p>A linked list can also be seen as a tree. Whatsoever, the benefit of post-order traversal is what ever processing we want apply on a node, we start from the end, the very last one. From bottom to top while pre-order is from top to bottom. Hence, we can use this character of post-order to do so</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">maxDepth</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="comment">// Edge case</span></span><br><span class="line">        <span class="keyword">if</span>(head.next == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> traversal(head, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">traversal</span><span class="params">(ListNode node, <span class="type">int</span> depth, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node.next == <span class="literal">null</span>)&#123;</span><br><span class="line">            maxDepth = Math.max(maxDepth, depth);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        traversal(node.next, depth+<span class="number">1</span>, n);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Indicate we are at the node 1 previous that the node that we want to delete</span></span><br><span class="line">        <span class="keyword">if</span>(depth == (maxDepth - n))&#123;</span><br><span class="line">            node.next = node.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Edge case, if we wanna delete 1st node, no node before</span></span><br><span class="line">        <span class="keyword">if</span>(maxDepth == n &amp;&amp; depth == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> node.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/30/Remove-Nth-from-End-of-List/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ER-Model" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

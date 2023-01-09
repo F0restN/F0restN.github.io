@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://f0restn.github.io">
-  <title>Archives: 2022/11 | Batcave</title>
+  <title>React | Batcave</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Basketball player &#x2F; Movie fan &#x2F; Dota2 &#x2F; Guitar">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Batcave">
-<meta property="og:url" content="https://f0restn.github.io/archives/2022/11/index.html">
+  <meta name="description" content="React 组件的重新渲染和新生成&#x2F;挂载不同，如一下代码，父组件的重新渲染会导致其重新渲染，但如果没有 useEffect 的话 states 的值不会改变因为挂载之后 state 已经生成且初始化完成，没有 setState 的方法的情况下 state 的值不会改变。状态并不会重新生成  12345678910111213const [day, setDay] &#x3D; useState(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React">
+<meta property="og:url" content="https://f0restn.github.io/2022/12/29/React/index.html">
 <meta property="og:site_name" content="Batcave">
-<meta property="og:description" content="Basketball player &#x2F; Movie fan &#x2F; Dota2 &#x2F; Guitar">
+<meta property="og:description" content="React 组件的重新渲染和新生成&#x2F;挂载不同，如一下代码，父组件的重新渲染会导致其重新渲染，但如果没有 useEffect 的话 states 的值不会改变因为挂载之后 state 已经生成且初始化完成，没有 setState 的方法的情况下 state 的值不会改变。状态并不会重新生成  12345678910111213const [day, setDay] &#x3D; useState(">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-30T04:32:10.000Z">
+<meta property="article:modified_time" content="2023-01-09T15:52:12.702Z">
 <meta property="article:author" content="Drake Zhou">
 <meta property="article:tag" content="Full stack developer">
 <meta name="twitter:card" content="summary">
@@ -145,266 +147,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React
+    </h1>
+  
+
+        
+        <a href="/2022/12/29/React/" class="archive-article-date">
+  	<time datetime="2022-12-30T04:32:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>React 组件的重新渲染和新生成&#x2F;挂载不同，如一下代码，父组件的重新渲染会导致其重新渲染，但如果没有 useEffect 的话 states 的值不会改变因为挂载之后 state 已经生成且初始化完成，没有 setState 的方法的情况下 state 的值不会改变。状态并不会重新生成</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [day, setDay] = <span class="title function_">useState</span>(course.<span class="property">courseDay</span>);</span><br><span class="line"><span class="keyword">const</span> [time, setTime] = <span class="title function_">useState</span>(course.<span class="property">courseTime</span>);</span><br><span class="line"><span class="keyword">const</span> [term, setTerm] = <span class="title function_">useState</span>(course.<span class="property">courseTerm</span>);</span><br><span class="line"><span class="keyword">const</span> [year, setYear] = <span class="title function_">useState</span>(course.<span class="property">courseYear</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// // Update state</span></span><br><span class="line"><span class="title function_">useNonInitUpdateEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;Node: course Row Update day time term year&quot;</span>);</span><br><span class="line">	<span class="title function_">setDay</span>(course.<span class="property">courseDay</span>);</span><br><span class="line">	<span class="title function_">setTime</span>(course.<span class="property">courseTime</span>);</span><br><span class="line">	<span class="title function_">setTerm</span>(course.<span class="property">courseTerm</span>);</span><br><span class="line">	<span class="title function_">setYear</span>(course.<span class="property">courseYear</span>);</span><br><span class="line">&#125;, [course.<span class="property">courseDay</span>, course.<span class="property">courseTime</span>, course.<span class="property">courseTerm</span>, course.<span class="property">courseYear</span>]);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>每个 render 后的组件都会有对应的快照，对应当时的 states 和 props</li>
+<li>给组件的 props 里传递 key 属性，不同的 key 值会导致组件的重新渲染</li>
+<li>只在挂载后更新&#x2F;使用的 useEffect</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useEffect, useRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">useNonInitUpdateEffect</span> = (<span class="params">fn, inputs</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> didMountRef = <span class="title function_">useRef</span>(<span class="literal">false</span>);</span><br><span class="line">	<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (didMountRef.<span class="property">current</span>) <span class="title function_">fn</span>();</span><br><span class="line">		<span class="keyword">else</span> didMountRef.<span class="property">current</span> = <span class="literal">true</span>;</span><br><span class="line">	&#125;, inputs);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> useNonInitUpdateEffect;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/30/Remove-Nth-from-End-of-List/" class="archive-article-date">
-  	<time datetime="2022-11-30T16:34:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/30/Remove-Nth-from-End-of-List/">Remove Nth From End of List</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://f0restn.github.io/2022/12/29/React/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/17/ER-Model/" class="archive-article-date">
-  	<time datetime="2022-11-17T17:12:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/01/01/%E5%86%99%E7%BB%99%E6%96%B0%E7%9A%84%E4%B8%80%E5%B9%B4-%E7%8E%8B%E5%B0%8F%E6%B3%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          写给新的一年(1996)--王小波
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/12/22/Algorithm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Algorithm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/17/ER-Model/">ER Model</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/Schema-Refinement/" class="archive-article-date">
-  	<time datetime="2022-11-17T04:52:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/Schema-Refinement/">Schema Refinement</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/Handy-Tools/" class="archive-article-date">
-  	<time datetime="2022-11-16T20:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/Handy-Tools/">Handy Tools</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/Binary-Tree/" class="archive-article-date">
-  	<time datetime="2022-11-16T20:50:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/Binary-Tree/">Binary Tree</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/LinkedList-Array/" class="archive-article-date">
-  	<time datetime="2022-11-16T18:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/LinkedList-Array/">LinkedList &amp; Array</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/11/16/hello-world/" class="archive-article-date">
-  	<time datetime="2022-11-16T17:57:46.938Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -427,8 +330,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
